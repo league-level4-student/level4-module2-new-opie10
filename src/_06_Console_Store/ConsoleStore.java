@@ -1,6 +1,6 @@
 package _06_Console_Store;
 
-public class ConsoleStore {
+public class ConsoleStore extends Cart {
 
     /*
      * Write a program that simulates shopping in a store using the Scanner and
@@ -37,7 +37,27 @@ public class ConsoleStore {
      */
 
     public static void main(String[] args) {
-
+    	int stipend = 100;
+    	Cart<Object> car = new Cart<Object>();
+    	Shop<Object> shop = new Shop<Object>();
+    	Mouse mice = new Mouse();
+    	WaterBottle bottle = new WaterBottle();
+    	Bucket bucket = new Bucket();
+    	Bike bike = new Bike();
+    	Goggles goog = new Goggles();
+    	shop.add(mice);
+    	shop.add(goog);
+    	shop.add(bike);
+    	shop.add(bucket);
+    	shop.add(bottle);
+    	begin(shop,car,stipend);
     }
-
+    public static void begin(Shop s, Cart c, int stipend) {
+    	System.out.println("Welcome to Augie's shop of [INSERT CONTENTS HERE]!");
+    	System.out.println("What would you like to buy?");
+    	for (int i = 0; i < s.length(); i++) {
+			System.out.println(s.get(i));
+		}
+    	
+    }
 }
