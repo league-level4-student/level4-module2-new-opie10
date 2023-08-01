@@ -1,5 +1,7 @@
 package _06_Console_Store;
 
+import java.util.Scanner;
+
 public class ConsoleStore extends Cart {
 
     /*
@@ -35,11 +37,15 @@ public class ConsoleStore extends Cart {
      * print out a receipt showing their name, the individual prices of the
      * items and their total.
      */
-
+	static Boolean checkout = false;
+	 Scanner scan = new Scanner(System.in);
+	static Cart<Object> car = new Cart<Object>();
+	static Shop<Object> shop = new Shop<Object>();
+	static int total=0;
+	
     public static void main(String[] args) {
     	int stipend = 100;
-    	Cart<Object> car = new Cart<Object>();
-    	Shop<Object> shop = new Shop<Object>();
+    	
     	Mouse mice = new Mouse();
     	WaterBottle bottle = new WaterBottle();
     	Bucket bucket = new Bucket();
@@ -50,14 +56,70 @@ public class ConsoleStore extends Cart {
     	shop.add(bike);
     	shop.add(bucket);
     	shop.add(bottle);
+    	System.out.println("Welcome to Augie's shop of [INSERT CONTENTS HERE]!");
     	begin(shop,car,stipend);
     }
     public static void begin(Shop s, Cart c, int stipend) {
-    	System.out.println("Welcome to Augie's shop of [INSERT CONTENTS HERE]!");
+    	 Scanner scan = new Scanner(System.in);
+    	System.out.println("Would you like to manage your cart, or shop?");
+    	String cartman = scan.nextLine();
+    	if (cartman.equals("Manage")||cartman.equals("manage")) {
+			manage(s,c,stipend);
+		}
+    	else {
     	System.out.println("What would you like to buy?");
     	for (int i = 0; i < s.length(); i++) {
-			System.out.println(s.get(i));
+			System.out.println(s.get(i).name());
 		}
     	
+    	purchase(s,c,stipend);
+    	scan.close();
+    	}
     }
+	public static void purchase(Shop s, Cart c, int stipend) {
+		 Scanner scan = new Scanner(System.in);
+	String item=	scan.nextLine();
+	for (int i = 0; i < shop.length(); i++) {
+		if (item==shop.get(i).name()) {
+			System.out.println("You have selected "+shop.get(i).name()+". \n This item costs "+shop.get(i).getPrice()+". \n Continue?");
+			String continu=	scan.nextLine();
+			if (continu.equals("Yes")||continu.equals("yes")||continu.equals("YES")) {
+				total = total+shop.get(i).getPrice();
+				car.add(shop.get(i));
+				
+				spend(shop,car,stipend);
+			}
+			else {
+				begin(shop, car, stipend);
+			}
+		}
+		else {
+			break;
+		}
+	}
+	scan.close();
+		// TODO Auto-generated method stub
+	}
+	public static void spend(Shop shop, Cart car, int stipend) {
+		 Scanner scan = new Scanner(System.in);
+		// TODO Auto-generated method stub
+		System.out.println("Would you like to continue shopping?");
+		String shopping = scan.nextLine();
+		if(shopping.equals("Yes")||shopping.equals("yes")||shopping.equals("YES")) {
+			begin(shop,car,stipend);
+		}
+		else {
+			checkout(shop,car,stipend,total);
+				
+			
+		}
+	}
+	public static void checkout(Shop shop, Cart car, int stipend, int total) {
+		// TODO Auto-generated method stub
+		
+		
+	}
+	public static void manage(Shop shop, Cart car, int stipend) {
+		System.out.println("Welcome to your cart management!");
+	}
 }

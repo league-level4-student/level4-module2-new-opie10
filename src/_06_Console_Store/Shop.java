@@ -1,5 +1,7 @@
 package _06_Console_Store;
 
+import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -9,31 +11,34 @@ import javax.swing.JPanel;
 
 
 
-public class Shop<Products extends Object> {
-    private Products[] shelf;
+public class Shop<T extends Object> {
+	private ArrayList<Object> shop ;
 
-    public Shop() {
-    	shelf = (Products[]) new Shop[10];
+    @SuppressWarnings("unchecked")
+	public Shop() {
+        shop = new ArrayList<Object>();
     }
 
-    // Adds an item to the cart
-    public void add(Products item) {
-        for (int i = 0; i < shelf.length; i++) {
-			if (shelf[i]==null) {
-				shelf[i]=item;
-				System.out.println("Added "+item+" to your cart.");
-				return;
-			}
-		}
+    // Adds an item to the shop
+    public void add(T item) {
+        	
+				shop.add(item);
+				
+				
+			
+		
     }
     public Products get(int i) {
-		return shelf[i];
+    
+    	
+		return (Products) shop.get(i);
     	
     }
+    // Displays everything currently in the shop
    
 
     public int length() {
-        return shelf.length;
+        return shop.size();
     }
 }
 

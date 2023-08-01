@@ -15,5 +15,11 @@ public class Bucket extends Products {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	@Override
+	public String name() {
+		// TODO Auto-generated method stub
+		return "Bucket";
+	}
+	
 
 }

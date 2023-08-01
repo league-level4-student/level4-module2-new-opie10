@@ -16,4 +16,10 @@ public class WaterBottle extends Products {
 		return 0;
 	}
 
+	@Override
+	public String name() {
+		// TODO Auto-generated method stub
+		return "Bottle";
+	}
+
 }

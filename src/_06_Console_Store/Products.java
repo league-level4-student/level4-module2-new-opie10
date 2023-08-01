@@ -12,7 +12,7 @@ public abstract class Products {
 	 String item;
 	 	public abstract int getPrice();
 	    public abstract JLabel getItem();
-
+	    public abstract String name();
 	    @SuppressWarnings("rawtypes")
 	    public static ImageIcon loadImage(String fileName) {
 	        try {

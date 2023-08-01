@@ -12,8 +12,9 @@ import javax.swing.JPanel;
 public class Cart<T extends Object> {
     private T[] cart;
 
-    public Cart() {
-        cart = (T[]) new Cart[5];
+    @SuppressWarnings("unchecked")
+	public Cart() {
+        cart = (T[]) new Object[5];
     }
 
     // Adds an item to the cart
