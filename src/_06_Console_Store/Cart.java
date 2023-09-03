@@ -9,33 +9,45 @@ import javax.swing.JPanel;
 
 
 
-public class Cart<T extends Object> {
-    private T[] cart;
+public class Cart {
+    private Products[] cart;
 
     @SuppressWarnings("unchecked")
 	public Cart() {
-        cart = (T[]) new Object[5];
+        cart = (Products[]) new Products[5];
     }
 
     // Adds an item to the cart
-    public void add(T item) {
+    public void add(Products item, String name) {
         for (int i = 0; i < cart.length; i++) {
 			if (cart[i]==null) {
 				cart[i]=item;
-				System.out.println("Added "+item+" to your cart.");
+				System.out.println("Added "+name+" to your cart.");
 				return;
 			}
 		}
     }
-    public void remove(T item) {
+    public void remove(Products item) {
         for (int i = 0; i < cart.length; i++) {
 			if (cart[i]==item) {
 				cart[i]=null;
-				System.out.println("Removed "+item+" from your cart.");
+				System.out.println("Removed item from your cart.");
 				return;
 			}
 		}
     }
+public String getName(int i) {
+    
+    	
+		return cart[i].name();
+    	
+    }
+public Products get(int i) {
+    
+	
+	return cart[i];
+	
+}
     // Displays everything currently in the cart
     public void showCart() {
     	   JFrame frame = new JFrame();
@@ -54,6 +66,7 @@ public class Cart<T extends Object> {
        
 
     }
+   
 
     public int length() {
         return cart.length;

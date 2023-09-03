@@ -16,8 +16,7 @@ public abstract class Products {
 	    @SuppressWarnings("rawtypes")
 	    public static ImageIcon loadImage(String fileName) {
 	        try {
-	            return new ImageIcon(ImageIO
-	                    .read(new Cart().getClass().getResourceAsStream("images/"+fileName)));
+	            return new ImageIcon(ImageIO.read(new Cart().getClass().getResourceAsStream("images/"+fileName)));
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	            return null;

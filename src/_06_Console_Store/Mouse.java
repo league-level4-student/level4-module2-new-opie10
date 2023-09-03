@@ -3,11 +3,12 @@ package _06_Console_Store;
 import javax.swing.JLabel;
 
 public class Mouse extends Products {
-
+	
 	@Override
 	public JLabel getItem() {
+		this.item = "images.jpg";
 		// TODO Auto-generated method stub
-		return null;
+		return new JLabel(loadImage(this.item));
 	}
 
 	@Override
