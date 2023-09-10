@@ -42,10 +42,9 @@ public class ConsoleStore extends Cart {
 	static Cart car = new Cart();
 	static Shop<Object> shop = new Shop<Object>();
 	static int total = 0;
-
+	static int stipend = 100;
 	public static void main(String[] args) {
-		int stipend = 100;
-
+		
 		Mouse mice = new Mouse();
 		WaterBottle bottle = new WaterBottle();
 		Bucket bucket = new Bucket();
@@ -119,7 +118,45 @@ public class ConsoleStore extends Cart {
 
 	public static void checkout(Shop shop, Cart car, int stipend, int total) {
 		// TODO Auto-generated method stub
-
+		Scanner scan = new Scanner(System.in);
+		
+		System.out.println("Are you sure you want to checkout?");
+		String confirmche = scan.nextLine();
+		if (confirmche.equals("Yes")||confirmche.equals("yes")) {
+			System.out.println("Your current total is: "+total);
+			if(total>stipend) {
+			System.out.println("Your total exeeds your stipend, you must remove items");	
+			manage(shop,car,stipend);
+			
+			}
+			
+			if(total<=stipend) {
+				stipend =stipend -total;
+				
+				System.out.println("What is your name? ");
+				String na = scan.nextLine();
+			System.out.println("Purchase Completed");
+			car.showCart();
+			System.out.println("You bought: (See Popup) ");
+			
+			
+			String Receipt = new String();
+			Receipt = "Reciept: \n"+"Name: "+na;
+			for (int i = 0; i <car.length(); i++) {
+				
+				if (car.get(i)!= null) {
+				    Receipt = Receipt + "\n" + car.getName(i) + "--" + car.get(i).getPrice();
+					
+				} 
+			}
+			Receipt = Receipt +"\nTotal: " + total;
+		
+			System.out.println(Receipt);
+			System.out.println("Thank you for Shopping with us today!");
+			scan.close();
+			System.exit(0);
+			}
+		}
 	}
 
 	public static void manage(Shop shop, Cart car, int stipend) {

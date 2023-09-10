@@ -6,14 +6,14 @@ public class Bike extends Products {
 
 	@Override
 	public JLabel getItem() {
+		this.item = "Bike.jpg";
 		// TODO Auto-generated method stub
-		return null;
-	}
+		return new JLabel(loadImage(this.item));	}
 
 	@Override
 	public int getPrice() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 60;
 	}
 
 	@Override

@@ -6,14 +6,15 @@ public class WaterBottle extends Products {
 
 	@Override
 	public JLabel getItem() {
+		this.item = "bottle.jpg";
 		// TODO Auto-generated method stub
-		return null;
+		return new JLabel(loadImage(this.item));
 	}
 
 	@Override
 	public int getPrice() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 10;
 	}
 
 	@Override

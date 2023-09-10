@@ -37,9 +37,10 @@ public class Cart {
 		}
     }
 public String getName(int i) {
-    
-    	
-		return cart[i].name();
+	 if (cart[i] != null) {
+	        return cart[i].name();
+	    }
+	    return null;
     	
     }
 public Products get(int i) {

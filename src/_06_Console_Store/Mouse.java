@@ -6,7 +6,7 @@ public class Mouse extends Products {
 	
 	@Override
 	public JLabel getItem() {
-		this.item = "images.jpg";
+		this.item = "Mouse.jpg";
 		// TODO Auto-generated method stub
 		return new JLabel(loadImage(this.item));
 	}
@@ -14,7 +14,7 @@ public class Mouse extends Products {
 	@Override
 	public int getPrice() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 30;
 	}
 
 	@Override
